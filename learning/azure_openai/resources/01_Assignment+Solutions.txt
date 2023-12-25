@@ -1,0 +1,9 @@
+Generate 3 sample product reviews for a AI course.Each review should be not more than two sentences and there should be atleast one negative review
+
+Classify the sentiment in the review below 
+
+"I was quite disappointed with the AI course. The content felt disorganized, and there was a lack of clear instruction. I expected more from this course."
+
+Classify the sentiment in the review below 
+
+"I found the AI course to be a great investment in my learning journey. The practical exercises and real-world applications provided valuable insights, and the community support was outstanding."
