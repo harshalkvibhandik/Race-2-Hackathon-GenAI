@@ -1,0 +1,10 @@
+https://learn.microsoft.com/en-us/azure/ai-services/openai/
+
+https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models
+
+https://azure.microsoft.com/en-in/pricing/details/cognitive-services/openai-service/#overview
+
+https://learn.microsoft.com/en-us/azure/ai-services/openai/quotas-limits
+
+
+

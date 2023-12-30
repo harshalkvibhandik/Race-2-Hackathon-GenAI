@@ -1,0 +1,25 @@
+def get_stock_price(symbol):
+    """Get the current stock price for given symbol"""
+    stock_info = {
+        "symbol": symbol,
+        "price": "1000"
+    }
+    return json.dumps(stock_info)
+
+
+functions = [
+    {
+        "name": "get_stock_price",
+        "description": "Get the current stock price for the given symbol",
+        "parameters": {
+            "type": "object",
+            "properties": {  
+                "symbol": {
+                    "type": "string",
+                    "description": "The symbol, e.g. AAPL",
+                }
+            },
+            "required": ["symbol"],
+        },
+    }
+]
