@@ -1,14 +1,14 @@
-from models import LanguageMessages
 from models import LanguageType
 from models import ModelType
 
 
-def get_default_language_messages():
-    return LanguageMessages(LanguageType.KOTLIN.value[0], LanguageType.KOTLIN.value[1])
-
-
 def get_default_messages():
-    return LanguageType.KOTLIN.value[1]
+    return [
+        {
+            "role": "system",
+            "content": "You are an expert financial advisor and help peoples to get the maximum credit card benefits."
+        }
+    ]
 
 
 def get_messages_for_language(language):
@@ -35,7 +35,6 @@ def generate_language_system_context_dict():
 
 def generate_deployed_models_dict():
     return {
-        ModelType.GPT_4_32K.value[0]: ModelType.GPT_4_32K.value[1],
         ModelType.GPT_35_TURBO_16K.value[0]: ModelType.GPT_35_TURBO_16K.value[1],
         ModelType.GPT_35_TURBO.value[0]: ModelType.GPT_35_TURBO.value[1]
     }
@@ -43,9 +42,7 @@ def generate_deployed_models_dict():
 
 def calculate_cost_for_model(model_name, total_tokens, prompt_tokens, completion_tokens):
     # from https://openai.com/pricing#language-models
-    if model_name == ModelType.GPT_4_32K.value[0]:
-        return total_tokens * 0.0600 / 1000
-    elif model_name == ModelType.GPT_35_TURBO_16K.value[0]:
+    if model_name == ModelType.GPT_35_TURBO_16K.value[0]:
         return total_tokens * 0.0160 / 1000
     elif model_name == ModelType.GPT_35_TURBO.value[0]:
         return total_tokens * 0.0080 / 1000
@@ -56,13 +53,13 @@ def calculate_cost_for_model(model_name, total_tokens, prompt_tokens, completion
 def generate_page_header_html_content():
     return """
             <h1 style='text-align: center;'>
-            Race 2 Innovate Hackathon
+            SmartSwipe.io - by Team AI-Bytes
             </h1>
             <h3 style='text-align: center;'>
-            Chatbot to generate unit test cases - by LLMNinjas Team</h3>
+            Demo for - Microsoft A4 Enablement Innovate Hackathon</h3>
             <br>
             <h5 style='text-align: center;'>
-            This Chatbot is well matured to genearate unit test cases - simply paste your code
+            This Chatbot is well matured to suggest most advantageous credit card to swipe
             </h5>
             <br>
         """

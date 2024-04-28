@@ -1,18 +1,17 @@
 import streamlit as st
 from streamlit_chat import message
+
 from client import get_response_from_client
-from utils import generate_deployed_models_dict
-from utils import get_default_messages
-from utils import get_default_language_messages
-from utils import generate_page_header_html_content
-from utils import generate_language_system_context_dict
-from utils import get_messages_for_language
 from utils import calculate_cost_for_model
+from utils import generate_deployed_models_dict
+from utils import generate_language_system_context_dict
+from utils import generate_page_header_html_content
+from utils import get_default_messages
 from utils import get_formatted_cost_message
 from utils import get_formatted_total_cost_message
 
 # Setting page title and header
-st.set_page_config(page_title='Race 2 Innovate Hackathon', page_icon=':robot_face:')
+st.set_page_config(page_title='SmartSwipe.io - by Team AI-Bytes', page_icon=':robot_face:')
 st.markdown(generate_page_header_html_content(), unsafe_allow_html=True)
 
 # Initialise session state variables
@@ -40,17 +39,8 @@ model_name = st.sidebar.radio('Choose Azure OpenAI model:', list(deployed_models
 
 language_system_context = generate_language_system_context_dict()
 
+languageMessages = get_default_messages()
 
-def update_messages_data(language):
-    languageMessages.value = get_messages_for_language(language)
-    st.session_state['messages'] = languageMessages.value
-
-
-languageMessages = get_default_language_messages()
-languageMessages.bind_to(update_messages_data)
-
-languageMessages.language = st.sidebar.selectbox('Choose your programming language:',
-                                                 list(language_system_context.keys()))
 counter_placeholder = st.sidebar.empty()
 counter_placeholder.write(f"Total cost of this conversation: ${st.session_state['total_cost']:.5f}")
 clear_button = st.sidebar.button('Clear Conversation', key='clear')
@@ -90,10 +80,10 @@ container = st.container()
 with container:
     with st.form(key='my_form', clear_on_submit=True):
         user_input = st.text_area(
-            label=f"Add a {languageMessages.language.lower()} code to generate unit test cases:",
+            label=f"Submit your query related with the Credit Cards transactions:",
             key='input',
-            height=120)
-        submit_button = st.form_submit_button(label='Generate')
+            height=80)
+        submit_button = st.form_submit_button(label='Submit')
 
     if submit_button and user_input:
         output, total_tokens, prompt_tokens, completion_tokens = generate_response(user_input)
