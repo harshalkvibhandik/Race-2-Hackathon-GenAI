@@ -4,7 +4,6 @@ from streamlit_chat import message
 from client import get_response_from_client
 from utils import calculate_cost_for_model
 from utils import generate_deployed_models_dict
-from utils import generate_language_system_context_dict
 from utils import generate_page_header_html_content
 from utils import get_default_messages
 from utils import get_formatted_cost_message
@@ -37,8 +36,6 @@ st.sidebar.title('Settings')
 deployed_models = generate_deployed_models_dict()
 model_name = st.sidebar.radio('Choose Azure OpenAI model:', list(deployed_models.keys()))
 
-language_system_context = generate_language_system_context_dict()
-
 languageMessages = get_default_messages()
 
 counter_placeholder = st.sidebar.empty()
@@ -52,7 +49,7 @@ model = deployed_models[model_name]
 if clear_button:
     st.session_state['generated'] = []
     st.session_state['past'] = []
-    st.session_state['messages'] = language_system_context[languageMessages.language]
+    st.session_state['messages'] = languageMessages
     st.session_state['number_tokens'] = []
     st.session_state['model_name'] = []
     st.session_state['cost'] = []

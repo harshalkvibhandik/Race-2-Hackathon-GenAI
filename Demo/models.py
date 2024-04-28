@@ -55,4 +55,4 @@ class LanguageMessages(object):
 
 class ModelType(Enum):
     GPT_35_TURBO_16K = ('gpt-35-turbo-16k', 'testing0613')
-    GPT_35_TURBO = ('gpt-35-turbo', 'testing0613')
+    GPT_35_TURBO = ('gpt-35-turbo', 'testinggpt35turbo')
